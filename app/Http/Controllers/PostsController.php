@@ -6,11 +6,21 @@ use App\Post;
 
 class PostsController
 {
+    /**
+     * Returns all posts & renders them
+     */
     public function index()
     {
-        return view('posts/index');
+        $posts = Post::latest()->get();
+
+        return view('posts/index', [
+            'posts' => $posts
+        ]);
     }
 
+    /**
+     * Returns individual post & renders it
+     */
     public function show($slug)
     {
 

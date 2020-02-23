@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {{ $post->body }}
-</body>
-</html>
+@extends('layout')
+
+@section('content')
+    <div class="py-4 bg-dark text-white">
+        <div class="container">
+            <a href="/posts/"><h4 class="text-muted">Posts</h4></a>
+            <h1>{{ $post->title }}</h1>
+        </div>
+    </div>
+    <div class="py-4">
+        <div class="container">
+            <p>{{ $post->body }}</p>
+        </div>
+    </div>
+@endsection

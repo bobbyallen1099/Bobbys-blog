@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Index page
-</body>
-</html>
+@extends('layout')
+
+@section('content')
+    <div class="py-4 bg-dark text-white">
+        <div class="container">
+            <h1>Homepage</h1>
+        </div>
+    </div>
+    <div class="py-4">
+        <div class="container">
+            <a href="/posts/" class="btn btn-link">Posts</a>
+        </div>
+    </div>
+@endsection

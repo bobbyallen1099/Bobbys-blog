@@ -1,11 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Posts
-</body>
-</html>
+@extends('layout')
+
+@section('content')
+    <div class="py-4 bg-dark text-white">
+        <div class="container">
+            <h1>Posts</h1>
+        </div>
+    </div>
+    <div class="py-4">
+        <div class="container">
+            <div class="row">
+                @foreach ($posts as $post)
+                    <div class="col-md-4">
+                        <a href="/posts/{{ $post->slug }}" class="card card-body">
+                            <h3>{{ $post->title }}</h3>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endsection
