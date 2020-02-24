@@ -11,7 +11,8 @@ class PostsController
      */
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::latest()->paginate(9);
+
 
         return view('posts/index', [
             'posts' => $posts

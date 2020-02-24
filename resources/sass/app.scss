@@ -7,7 +7,7 @@ body {
 
 a, .btn-link {
     color: $white;
-    
+
     &:hover {
         color: $white;
     }
@@ -28,6 +28,21 @@ a, .btn-link {
     color: $white;
 
     a {
+        color: $white;
+    }
+}
+
+.featured-articles {
+    padding: 2rem;   
+}
+
+.pagination {
+    margin-top: 2rem;
+    justify-content: center;
+
+    .page-link {
+        background-color: mix($white, $dark, 15%);
+        border: 0;
         color: $white;
     }
 }

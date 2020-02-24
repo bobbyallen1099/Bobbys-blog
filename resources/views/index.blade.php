@@ -6,9 +6,21 @@
             <h1>Homepage</h1>
         </div>
     </div>
-    <div class="py-4">
+    
+    <div class="featured-articles">
         <div class="container">
-            <a href="/posts/" class="btn btn-link">Posts</a>
+            <h3>Featured posts</h3>
+            <div class="row">
+                @foreach ($featured_posts as $post)
+                    <div class="col-md-4">
+                        <a href="/posts/{{ $post->slug }}" class="card card-body">
+                            <h3>{{ $post->title }}</h3>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
+
+
 @endsection
