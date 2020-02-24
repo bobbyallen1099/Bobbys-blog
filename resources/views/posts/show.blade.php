@@ -1,9 +1,9 @@
 @extends('layout')
 
 @section('content')
-    <div class="py-4 bg-dark text-white">
+    <div class="banner">
         <div class="container">
-            <a href="/posts/"><h4 class="text-muted">Posts</h4></a>
+            <a href="/posts/"><h4>Posts</h4></a>
             <h1>{{ $post->title }}</h1>
         </div>
     </div>

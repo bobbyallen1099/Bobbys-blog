@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <div class="py-4 bg-dark text-white">
+    <div class="banner">
         <div class="container">
             <h1>Homepage</h1>
         </div>

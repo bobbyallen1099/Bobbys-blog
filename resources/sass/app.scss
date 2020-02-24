@@ -1,1 +1,33 @@
-//
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    background-color: mix($white, $dark, 10%);
+    color: $white;
+}
+
+a, .btn-link {
+    color: $white;
+    
+    &:hover {
+        color: $white;
+    }
+}
+
+.banner {
+    padding: 4rem 0;
+    color: $white;
+    background: $dark;
+
+    a {
+        color: $white;
+    }
+}
+
+.card {
+    background-color: mix($white, $dark, 15%);
+    color: $white;
+
+    a {
+        color: $white;
+    }
+}
