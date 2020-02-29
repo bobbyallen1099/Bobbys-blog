@@ -1,48 +1,15 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-body {
-    background-color: mix($white, $dark, 10%);
-    color: $white;
-}
-
-a, .btn-link {
-    color: $white;
-
-    &:hover {
-        color: $white;
-    }
-}
 
 .banner {
-    padding: 4rem 0;
-    color: $white;
-    background: $dark;
-
-    a {
-        color: $white;
-    }
-}
-
-.card {
-    background-color: mix($white, $dark, 15%);
-    color: $white;
-
-    a {
-        color: $white;
-    }
-}
-
-.featured-articles {
-    padding: 2rem;   
-}
-
-.pagination {
-    margin-top: 2rem;
-    justify-content: center;
-
-    .page-link {
-        background-color: mix($white, $dark, 15%);
-        border: 0;
-        color: $white;
-    }
+    padding: 2rem 0;
+    background-color: $gray-200;
+    margin-bottom: 2rem;
 }

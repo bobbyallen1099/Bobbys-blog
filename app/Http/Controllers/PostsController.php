@@ -14,9 +14,7 @@ class PostsController
         $posts = Post::latest()->paginate(9);
 
 
-        return view('posts/index', [
-            'posts' => $posts
-        ]);
+        return view('posts/index', compact('posts'));
     }
 
     /**
@@ -27,8 +25,6 @@ class PostsController
 
         $post = Post::where('slug', $slug)->firstOrFail();
 
-        return view('posts/show', [
-            'post' => $post
-        ]);
+        return view('posts/show', compact('post'));
     }
 }
