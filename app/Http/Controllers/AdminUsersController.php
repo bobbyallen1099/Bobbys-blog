@@ -22,6 +22,13 @@ class AdminUsersController
     }
 
     public function store(request $request, User $user) {
+
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
         $user = User::firstOrCreate([
             'email' => $request->email
         ]);
@@ -31,7 +38,7 @@ class AdminUsersController
         $user->save();
         
         Session::flash('message', 'Successfully added user'); 
-        Session::flash('name', $post->email); 
+        Session::flash('name', $user->email); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect(route('admin.users.show', $user));
@@ -47,10 +54,35 @@ class AdminUsersController
         return view('admin.users.edit', compact('user'));
     }
     public function update(request $request, $id) {
+
         $user = User::where('id', $id)->firstOrFail();
 
+        // If the email has changed
+        if($request->email != $user->email) {
+            $validatedData = $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            ]);
+        } else {
+            // Remove unique:users
+            $validatedData = $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+                'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            ]);   
+        }
+
+
+
+
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+
+        // Change password if something is inputted
+        if($request->password != '') {
+            $user->password = Hash::make($request->password);
+        }
+
         $user->save();
 
         Session::flash('message', 'Successfully updated user'); 

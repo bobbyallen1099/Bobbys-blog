@@ -20,6 +20,11 @@ class AdminPostsController
     
     public function store(request $request) {
 
+        $validatedData = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);
+
         $post = Post::firstOrCreate([
             'title' => $request->title
         ]);
@@ -49,6 +54,11 @@ class AdminPostsController
     }
     public function update(request $request, $id) {
         $post = Post::where('id', $id)->firstOrFail();
+
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+        ]);
 
         $post->title = $request->title;
         $slug = str_slug($request->title, "-");
