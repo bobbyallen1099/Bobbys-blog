@@ -20,19 +20,22 @@
             @csrf
             <div class="form-group">
                 <label for="title">
-                    Title
+                    Title *
                 </label>
                 <input name="title" id="title" type="text" class="form-control @error('title') is-invalid @enderror" value="{{ $post->title }}">
             </div>
 
             <div class="form-group">
                 <label for="body">
-                    Body
+                    Body *
                 </label>
                 <textarea name="body" id="body" rows="4" class="form-control @error('body') is-invalid @enderror">{{ $post->body }}</textarea>
             </div>
 
-            <button class="btn btn-primary">Update</button>
+            <div>
+                <button class="btn btn-primary">Update</button>
+                <a href="{{ route('admin.posts.confirmdelete', $post) }}" class="btn btn-danger btn-xs">Delete</a>
+            </div>
 
         </form>
     </div>

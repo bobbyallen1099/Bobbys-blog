@@ -33,6 +33,7 @@ class AdminUsersController
             'email' => $request->email
         ]);
         
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -73,9 +74,7 @@ class AdminUsersController
             ]);   
         }
 
-
-
-
+        $user->name = $request->name;
         $user->email = $request->email;
 
         // Change password if something is inputted
@@ -86,7 +85,7 @@ class AdminUsersController
         $user->save();
 
         Session::flash('message', 'Successfully updated user'); 
-        Session::flash('name', $user->email); 
+        Session::flash('name', $user->name); 
         Session::flash('alert-class', 'alert-success');
 
         return redirect(route('admin.users.show', $user));
@@ -103,9 +102,9 @@ class AdminUsersController
         $user->delete();
 
         Session::flash('message', 'Successfully deleted user'); 
-        Session::flash('name', $user->email); 
+        Session::flash('name', $user->name); 
         Session::flash('alert-class', 'alert-success');
 
-        return redirect(route('admin.posts.index'));
+        return redirect(route('admin.users.index'));
     }
 }

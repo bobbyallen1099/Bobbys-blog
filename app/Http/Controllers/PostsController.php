@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 
 class PostsController
 {
@@ -22,9 +23,9 @@ class PostsController
      */
     public function show($slug)
     {
-
         $post = Post::where('slug', $slug)->firstOrFail();
+        $author = User::where('id', $post->published_by)->firstOrFail();
 
-        return view('posts/show', compact('post'));
+        return view('posts/show', compact('post', 'author'));
     }
 }

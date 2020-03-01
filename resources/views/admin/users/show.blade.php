@@ -11,12 +11,15 @@
             </div>
         @endif
         <div class="row">
-            <div class="col">
-                <h2>{{ $user->email }}</h2>
-                <div>
-                    <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-xs">Edit</a>
-                    <a href="{{ route('admin.users.confirmdelete', $user) }}" class="btn btn-danger btn-xs">Delete</a>
+            <div class="col-md-8">
+                <div class="card card-body">
+                    <h2>{{ $user->name }}</h2>
+                    <h4>{{ $user->email }}</h4>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-xs">Edit</a>
+                <a href="{{ route('admin.users.confirmdelete', $user) }}" class="btn btn-danger btn-xs">Delete</a>
             </div>
         </div>
     </div>

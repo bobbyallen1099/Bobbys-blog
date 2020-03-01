@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Session;
+use Auth;
 
 class AdminPostsController
 {
@@ -33,6 +35,7 @@ class AdminPostsController
         $slug = str_slug($request->title, "-");
         $post->slug = $slug;
         $post->body = $request->body;
+        $post->published_by = auth::user()->id;
         $post->save();
 
         Session::flash('message', 'Successfully added post'); 
@@ -44,8 +47,9 @@ class AdminPostsController
 
     public function show($id) {
         $post = Post::where('id', $id)->firstOrFail();
+        $author = User::where('id', $post->published_by)->firstOrFail();
 
-        return view('admin.posts.show', compact('post'));
+        return view('admin.posts.show', compact('post', 'author'));
     }
     public function edit($id) {
         $post = Post::where('id', $id)->firstOrFail();

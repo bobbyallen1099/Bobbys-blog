@@ -17,29 +17,31 @@
             </div>
         </div>
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Created on</th>
-                    <th>Modified on</th>
-                    <th width="150">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
+        <div class="card card-body p-0">
+            <table class="table m-0">
+                <thead>
                     <tr>
-                        <td><a href="{{ route('admin.users.show', $user) }}">{{ $user->email }}</a></td>
-                        <td>{{ $user->created_at }}</td>
-                        <td>{{ $user->updated_at }}</td>
-                        <td>
-                            <div class="d-flex justify-content-between">
-                                <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-xs">Edit</a>
-                            </div>
-                        </td>
+                        <th class="border-top-0">Email</th>
+                        <th class="border-top-0">Created on</th>
+                        <th class="border-top-0">Modified on</th>
+                        <th class="border-top-0" width="150">Actions</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($users as $user)
+                        <tr>
+                            <td><a href="{{ route('admin.users.show', $user) }}">{{ $user->email }}</a></td>
+                            <td>{{ $user->created_at }}</td>
+                            <td>{{ $user->updated_at }}</td>
+                            <td>
+                                <div class="d-flex justify-content-between">
+                                    <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-xs">Edit</a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
