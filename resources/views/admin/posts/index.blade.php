@@ -2,6 +2,14 @@
 
 @section('content')
     <div class="container">
+        @if(Session::has('message'))
+            <div class="alert {{ Session::get('alert-class', 'alert-info') }}">
+                {{ Session::get('message') }}
+                @if(Session::has('name'))
+                    <strong>'{{ Session::get('name') }}'</strong>
+                @endif
+            </div>
+        @endif
         <div class="d-flex justify-content-between mb-4">
             <h2>Posts</h2>
             <div>
@@ -27,7 +35,6 @@
                         <td>
                             <div class="d-flex justify-content-between">
                                 <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-primary btn-xs">Edit</a>
-                                <a href="{{ route('admin.posts.update', $post) }}" class="btn btn-danger btn-xs">Delete</a>
                             </div>
                         </td>
                     </tr>
