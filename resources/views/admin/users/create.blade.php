@@ -3,28 +3,27 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between mb-4">
-            <h2>Add new post</h2>
+            <h2>Add new user</h2>
         </div>
 
-        <form method="POST" action="{{ route('admin.posts.create') }}">
+        <form method="POST" action="{{ route('admin.users.create') }}">
             @csrf
             <div class="form-group">
-                <label for="title">
-                    Title
+                <label for="email">
+                    Email
                 </label>
-                <input name="title" id="title" type="text" class="form-control">
+                <input name="email" id="email" type="email" class="form-control">
             </div>
 
             <div class="form-group">
-                <label for="body">
-                    Body
+                <label for="password">
+                    Password
                 </label>
-                <textarea name="body" id="body" rows="4" class="form-control"></textarea>
+                <input name="password" id="password" type="password" class="form-control">
             </div>
-
+        
             <button class="btn btn-primary">Submit</button>
 
         </form>
     </div>
 @endsection
-

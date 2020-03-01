@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between mb-4">
-            <h2>Add new post</h2>
+            <h2>Edit post</h2>
         </div>
 
         <form method="POST" action="{{ route('admin.posts.update', $post->id) }}">
@@ -19,7 +19,7 @@
                 <label for="body">
                     Body
                 </label>
-                <textarea name="body" id="body" rows="4" class="form-control">"{{ $post->body }}</textarea>
+                <textarea name="body" id="body" rows="4" class="form-control">{{ $post->body }}</textarea>
             </div>
 
             <button class="btn btn-primary">Update</button>

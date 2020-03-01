@@ -29,8 +29,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', 'AdminUsersController@index')->name('index');
         Route::get('/create', 'AdminUsersController@create')->name('create');
         Route::post('/create', 'AdminUsersController@store')->name('store');
-        Route::get('/{plan}', 'AdminUsersController@show')->name('show');
-        Route::get('/{plan}/edit', 'AdminUsersController@edit')->name('edit');
-        Route::put('/{plan}/edit', 'AdminUsersController@update')->name('update');
+        Route::get('/{user}', 'AdminUsersController@show')->name('show');
+        Route::get('/{user}/edit', 'AdminUsersController@edit')->name('edit');
+        Route::post('/{user}/edit', 'AdminUsersController@update')->name('update');
+        Route::get('/{user}/delete', 'AdminUsersController@confirmdelete')->name('confirmdelete');
+        Route::post('/{user}/delete', 'AdminUsersController@delete')->name('delete');
     });
 });

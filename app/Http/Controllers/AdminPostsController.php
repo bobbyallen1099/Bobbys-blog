@@ -18,7 +18,8 @@ class AdminPostsController
         return view('admin.posts.create');
     }
     
-    public function store(request $request, Post $post) {
+    public function store(request $request) {
+
         $post = Post::firstOrCreate([
             'title' => $request->title
         ]);
@@ -74,7 +75,7 @@ class AdminPostsController
 
         Session::flash('message', 'Successfully deleted post'); 
         Session::flash('name', $post->title); 
-        Session::flash('alert-class', 'alert-danger');
+        Session::flash('alert-class', 'alert-success');
 
         return redirect(route('admin.posts.index'));
     }
