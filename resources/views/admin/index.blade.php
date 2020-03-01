@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container">
@@ -8,12 +8,12 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="card card-body">
-                        <a href="{{ route('admin_posts') }}">Posts</a>
+                        <a href="{{ route('admin.posts.index') }}">Posts</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body">
-                        <a href="{{ route('admin_users') }}">Users</a>
+                        <a href="{{ route('admin.users.index') }}">Users</a>
                     </div>
                 </div>
             </div>

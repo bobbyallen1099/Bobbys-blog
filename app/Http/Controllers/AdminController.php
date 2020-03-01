@@ -34,9 +34,7 @@ class AdminController extends Controller
      */
     public function posts()
     {
-
         $posts = Post::latest()->get();
-        
         return view('admin.posts', compact('posts'));
     }
 
