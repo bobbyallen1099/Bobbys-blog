@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminUsersController
 {
+    /**
+     * Show all users
+     * @return Response
+     */
     public function index()
     {
         $users = User::latest()->get();
@@ -17,11 +21,20 @@ class AdminUsersController
         return view('admin.users.index', compact('users'));
     }
 
+    /**
+     * Show create form
+     * @return Response
+     */
     public function create() {
         return view('admin.users.create');
     }
 
-    public function store(request $request, User $user) {
+    /**
+     * Store a new user
+     * @param request $request
+     * @return Response
+     */
+    public function store(request $request) {
 
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -29,10 +42,7 @@ class AdminUsersController
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $user = User::firstOrCreate([
-            'email' => $request->email
-        ]);
-        
+        $user = User::create();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -44,20 +54,32 @@ class AdminUsersController
 
         return redirect(route('admin.users.show', $user));
     }
-    public function show($id) {
-        $user = User::where('id', $id)->firstOrFail();
 
+    /**
+     * Show user
+     * @param User $user
+     * @return Response
+     */
+    public function show(User $user) {
         return view('admin.users.show', compact('user'));
     }
-    public function edit($id) {
-        $user = User::where('id', $id)->firstOrFail();
 
+    /**
+     * Show edit user form
+     * @param User $user
+     * @return Response
+     */
+    public function edit(User $user) {
         return view('admin.users.edit', compact('user'));
     }
-    public function update(request $request, $id) {
 
-        $user = User::where('id', $id)->firstOrFail();
-
+    /**
+     * Update user
+     * @param request $request
+     * @param User $user
+     * @return Response
+     */
+    public function update(request $request, User $user) {
         // If the email has changed
         if($request->email != $user->email) {
             $validatedData = $request->validate([
@@ -91,14 +113,21 @@ class AdminUsersController
         return redirect(route('admin.users.show', $user));
     }
 
-    public function confirmdelete($id) {
-        $user = User::where('id', $id)->firstOrFail();
-
+    /**
+     * Show confirm delete post
+     * @param User $user
+     * @return Response
+     */
+    public function confirmdelete(User $user) {
         return view('admin.users.confirmdelete', compact('user'));
     }
     
-    public function delete($id) {
-        $user = User::where('id', $id)->firstOrFail();
+    /**
+     * Delete user
+     * @param User $user
+     * @return Redirect
+     */
+    public function delete(User $user) {
         $user->delete();
 
         Session::flash('message', 'Successfully deleted user'); 

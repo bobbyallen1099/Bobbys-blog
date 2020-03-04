@@ -17,11 +17,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', 'AdminPostsController@index')->name('index');
         Route::get('/create', 'AdminPostsController@create')->name('create');
         Route::post('/create', 'AdminPostsController@store')->name('store');
-        Route::get('/{plan}', 'AdminPostsController@show')->name('show');
-        Route::get('/{plan}/edit', 'AdminPostsController@edit')->name('edit');
-        Route::post('/{plan}/edit', 'AdminPostsController@update')->name('update');
-        Route::get('/{plan}/delete', 'AdminPostsController@confirmdelete')->name('confirmdelete');
-        Route::post('/{plan}/delete', 'AdminPostsController@delete')->name('delete');
+        Route::get('/{post}', 'AdminPostsController@show')->name('show');
+        Route::get('/{post}/edit', 'AdminPostsController@edit')->name('edit');
+        Route::post('/{post}/edit', 'AdminPostsController@update')->name('update');
+        Route::get('/{post}/delete', 'AdminPostsController@confirmdelete')->name('confirmdelete');
+        Route::post('/{post}/delete', 'AdminPostsController@delete')->name('delete');
     });
 
     // Users
